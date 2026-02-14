@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Noe ✨</title>
+    <script src="https://www.goat1000.com/tagcanvas.min.js" type="text/javascript"></script>
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(circle, #1a0033 0%, #000000 100%);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+
+        /* Estrellas fugaces */
+        .star {
+            position: absolute;
+            background: linear-gradient(90deg, #ffd700, transparent);
+            height: 2px;
+            filter: drop-shadow(0 0 6px #ffd700);
+            animation: animate 3s linear infinite;
+        }
+
+        @keyframes animate {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateX(-1000px) translateY(1000px) rotate(-45deg); opacity: 0; }
+        }
+
+        .center-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+        }
+
+        .main-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        #myCanvasContainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            max-width: 95vw;
+            max-height: 50vh;
+        }
+
+        .music-btn {
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #1a0033;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ffd700;
+            transition: transform 0.3s;
+        }
+
+        .fecha {
+            color: #ffd700;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stars"></div>
+
+    <div class="center-container">
+        <img src="noe.jpg" class="main-photo" alt="Noe">
+        <div class="fecha">✨ Feliz 14 de Febrero ✨</div>
+        <div style="color: #ffd700; margin-bottom: 10px;">Para: Noe</div>
+        
+        <div id="myCanvasContainer">
+            <canvas width="500" height="500" id="myCanvas">
+                <ul id="tags">
+                    <li><a href="#">Noe 🌟</a></li>
+                    <li><a href="#">La mejor ✨</a></li>
+                    <li><a href="#">Única 💎</a></li>
+                    <li><a href="#">Incondicional ❤️</a></li>
+                    <li><a href="#">Divertida 😂</a></li>
+                    <li><a href="#">Leal ✨</a></li>
+                    <li><a href="#">Sincera 🕊️</a></li>
+                    <li><a href="#">Especial 🌈</a></li>
+                    <li><a href="#">Valiente 💪</a></li>
+                    <li><a href="#">Increíble 🚀</a></li>
+                    <li><a href="#">Luz propia ✨</a></li>
+                    <li><a href="#">Pura buena vibra ✨</a></li>
+                    <li><a href="#">Oro puro 💛</a></li>
+                    <li><a href="#" style="font-size: 40px;">¡Gracias por tu amistad!</a></li>
+                </ul>
+            </canvas>
+        </div>
+
+        <button class="music-btn" onclick="playMusic()">🎵 Escuchar sorpresa</button>
+        <audio id="bgMusic" src="tu_musica.mp3"></audio>
+    </div>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("bgMusic");
+            audio.play();
+        }
+
+        window.onload = function() {
+            try {
+                TagCanvas.Start('myCanvas', 'tags', {
+                    textColour: '#ffd700',
+                    outlineColour: 'transparent',
+                    reverse: true,
+                    depth: 0.8,
+                    maxSpeed: 0.05,
+                    textFont: 'Arial',
+                    weight: true,
+                    initial: [0.1, -0.1],
+                    fadeIn: 800,
+                    wheelZoom: false
+                });
+            } catch(e) {
+                document.getElementById('myCanvasContainer').style.display = 'none';
+            }
+        };
+
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 25; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 100 + 50 + 'px';
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                star.style.top = Math.random() * window.innerHeight + 'px';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
+
